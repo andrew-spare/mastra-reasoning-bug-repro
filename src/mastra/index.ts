@@ -1,5 +1,5 @@
 import { Mastra } from "@mastra/core/mastra";
-import { InMemoryStore } from "@mastra/core/storage";
+import { LibSQLStore } from "@mastra/libsql";
 
 import { agentA } from "./agents/agent-a";
 
@@ -7,5 +7,8 @@ export const mastra = new Mastra({
   agents: {
     agentA,
   },
-  storage: new InMemoryStore(),
+  storage: new LibSQLStore({
+    id: "mastra-storage",
+    url: ":memory:",
+  }),
 });
